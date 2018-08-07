@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="addtoDB(alpha,numero)" style="padding: 30px">
+  <div class="form-group">
+    <label for="alpha">Enter text</label>
+    <input 
+      #alpha
+      class="form-control"
+      type="text" 
+      name="alpha"
+      formControlName="alpha" 
+      />
+  <div
+  *ngIf="alpha.errors && alpha.touched" 
+  class="alert alert-danger" >
+    <div *ngIf="alpha.errors.required">
+      Enter some text please!
+    </div>
+    <div *ngIf="alpha.errors.minlength">
+      Text is short!
+    </div>
+  </div>
+  <label for="numero">Enter number</label>
+  <input 
+    #numero
+    class="form-control"
+    type="number" 
+    name="numero" 
+    value="0"
+    required
+    minlength="1"/>
+  </div>
+  <button class="btn btn-primary">Insert</button>
+</form>
